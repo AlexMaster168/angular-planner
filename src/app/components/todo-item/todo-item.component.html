@@ -1,0 +1,19 @@
+<div class="todo-item" [class.completed]="todo.completed" [style.border-left-color]="folderColor">
+  <div class="todo-left">
+    <label class="checkbox-wrapper">
+      <input
+        type="checkbox"
+        [checked]="todo.completed"
+        (change)="toggle.emit(todo.id)"
+      />
+      <span class="checkmark"></span>
+    </label>
+
+    <span class="todo-title">{{ todo.title }}</span>
+  </div>
+
+  <div class="todo-actions">
+    <button class="btn-icon edit" (click)="openEdit.emit(todo)" title="Редактировать">✎</button>
+    <button class="btn-icon delete" (click)="remove.emit(todo.id)" title="Удалить">✕</button>
+  </div>
+</div>

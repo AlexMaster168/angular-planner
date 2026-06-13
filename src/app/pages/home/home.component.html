@@ -1,0 +1,23 @@
+<div class="app-layout">
+  <app-sidebar />
+
+  <main class="main-content">
+    <header class="header">
+      <div class="header-left">
+        <h1>{{ todoService.selectedFolderName() }}</h1>
+        <app-search-bar />
+      </div>
+
+      <div class="header-right">
+        <div class="user-info">
+          <span class="user-avatar">{{ authService.currentUser()?.avatar }}</span>
+          <span class="user-name">{{ authService.currentUser()?.name }}</span>
+        </div>
+        <button class="logout-btn" (click)="authService.logout()" title="Выйти">⏻</button>
+      </div>
+    </header>
+
+    <app-add-todo />
+    <app-todo-list />
+  </main>
+</div>

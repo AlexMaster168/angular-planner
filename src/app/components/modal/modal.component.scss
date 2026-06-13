@@ -1,0 +1,170 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.15s ease;
+}
+
+.modal-dialog {
+  background: #1e1e2e;
+  border: 1px solid #313244;
+  border-radius: 12px;
+  width: 420px;
+  max-width: 90vw;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.2s ease;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem 0;
+
+  h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    color: #cdd6f4;
+  }
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: #6c7086;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 6px;
+
+  &:hover {
+    background: #313244;
+    color: #f38ba8;
+  }
+}
+
+.modal-body {
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.field-label {
+  font-size: 0.8rem;
+  color: #a6adc8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.modal-input {
+  background: #313244;
+  border: 1px solid #45475a;
+  border-radius: 8px;
+  color: #cdd6f4;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.15s;
+
+  &::placeholder {
+    color: #6c7086;
+  }
+
+  &:focus {
+    border-color: #89b4fa;
+  }
+}
+
+.folder-select {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.folder-option {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #313244;
+  border: 1px solid #45475a;
+  border-radius: 8px;
+  color: #cdd6f4;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.15s;
+
+  &:hover {
+    border-color: var(--accent, #89b4fa);
+    background: #45475a;
+  }
+
+  &.selected {
+    border-color: var(--accent, #89b4fa);
+    background: color-mix(in srgb, var(--accent, #89b4fa) 15%, #313244);
+  }
+}
+
+.folder-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 0 1.5rem 1.25rem;
+}
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.15s;
+}
+
+.btn-cancel {
+  background: #313244;
+  color: #a6adc8;
+
+  &:hover {
+    background: #45475a;
+  }
+}
+
+.btn-save {
+  background: #89b4fa;
+  color: #1e1e2e;
+
+  &:hover:not(:disabled) {
+    background: #b4befe;
+  }
+
+  &:disabled {
+    background: #45475a;
+    color: #6c7086;
+    cursor: not-allowed;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}

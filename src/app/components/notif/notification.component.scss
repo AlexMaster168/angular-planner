@@ -1,0 +1,68 @@
+.notification-container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 2000;
+  pointer-events: none;
+}
+
+.notification {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  pointer-events: all;
+  animation: slideIn 0.2s ease, fadeOut 0.3s ease 2.7s forwards;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+
+  &--success {
+    background: #1e3a2a;
+    border: 1px solid #a6e3a1;
+    color: #a6e3a1;
+  }
+
+  &--info {
+    background: #1e2d3a;
+    border: 1px solid #89b4fa;
+    color: #89b4fa;
+  }
+
+  &--warning {
+    background: #3a2e1e;
+    border: 1px solid #f9e2af;
+    color: #f9e2af;
+  }
+}
+
+.notification-icon {
+  font-size: 1rem;
+}
+
+.notification-message {
+  flex: 1;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}

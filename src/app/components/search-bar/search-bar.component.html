@@ -1,0 +1,13 @@
+<div class="search-bar">
+  <span class="search-icon">🔍</span>
+  <input
+    type="text"
+    [value]="todoService.searchQuery()"
+    (input)="onSearch($event)"
+    placeholder="Поиск задач..."
+    class="search-input"
+  />
+  @if (todoService.searchQuery()) {
+    <button class="clear-btn" (click)="clearSearch()">✕</button>
+  }
+</div>

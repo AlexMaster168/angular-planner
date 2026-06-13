@@ -1,0 +1,46 @@
+.add-todo {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.add-input {
+  flex: 1;
+  background: #313244;
+  border: 1px solid #45475a;
+  border-radius: 8px;
+  color: #cdd6f4;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.15s;
+
+  &::placeholder {
+    color: #6c7086;
+  }
+
+  &:focus {
+    border-color: #89b4fa;
+  }
+}
+
+.add-btn {
+  background: #89b4fa;
+  color: #1e1e2e;
+  border: none;
+  border-radius: 8px;
+  width: 44px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.15s;
+
+  &:hover:not(:disabled) {
+    background: #b4befe;
+  }
+
+  &:disabled {
+    background: #45475a;
+    color: #6c7086;
+    cursor: not-allowed;
+  }
+}
