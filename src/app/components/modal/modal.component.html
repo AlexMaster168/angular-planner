@@ -1,0 +1,41 @@
+@if (isOpen) {
+  <div class="modal-backdrop" (click)="onBackdropClick($event)" (keydown)="onKeydown($event)">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>{{ title }}</h3>
+        <button class="modal-close" (click)="close.emit()">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <label class="field-label">Название задачи</label>
+        <input
+          class="modal-input"
+          [(ngModel)]="editTitle"
+          (keyup.enter)="onSave()"
+          placeholder="Введите название..."
+          autofocus
+        />
+
+        <label class="field-label">Папка</label>
+        <div class="folder-select">
+          @for (folder of folderOptions; track folder.id) {
+            <button
+              class="folder-option"
+              [class.selected]="editFolderId === folder.id"
+              [style.--accent]="folder.color"
+              (click)="editFolderId = folder.id"
+            >
+              <span class="folder-dot" [style.background]="folder.color"></span>
+              {{ folder.name }}
+            </button>
+          }
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-cancel" (click)="close.emit()">Отмена</button>
+        <button class="btn btn-save" (click)="onSave()" [disabled]="!editTitle.trim()">Сохранить</button>
+      </div>
+    </div>
+  </div>
+}

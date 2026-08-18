@@ -1,0 +1,37 @@
+<div class="todo-list-container">
+  <app-notif />
+
+  @if (todoService.filteredTodos().length === 0) {
+    <div class="empty-state">
+      <span class="empty-icon">📝</span>
+      <p>Нет задач</p>
+      <span class="empty-hint">Добавьте задачу выше</span>
+    </div>
+  } @else {
+    <div class="todo-list">
+      @for (todo of todoService.filteredTodos(); track todo.id) {
+        <app-todo-item
+          [todo]="todo"
+          [folderColor]="getFolderColor(todo.folderId)"
+          (toggle)="onToggle($event)"
+          (remove)="onRemove($event)"
+          (openEdit)="openEditModal($event)"
+        />
+      }
+    </div>
+    <div class="todo-stats">
+      <span>{{ todoService.filteredTodos().length }} задач</span>
+      <span>{{ todoService.filteredTodos().filter(t => t.completed).length }} выполнено</span>
+    </div>
+  }
+</div>
+
+<app-modal
+  [isOpen]="modalOpen"
+  title="Редактировать задачу"
+  [todoTitle]="modalTitle"
+  [todoFolderId]="modalFolderId"
+  [folderOptions]="todoService.folders()"
+  (close)="closeModal()"
+  (save)="onSaveEdit($event)"
+/>

@@ -1,0 +1,14 @@
+<div class="notification-container">
+  @for (n of notifications(); track n.id) {
+    <div class="notification" [class]="'notification--' + n.type" (click)="dismiss(n.id)">
+      <span class="notification-icon">
+        @switch (n.type) {
+          @case ('success') { ✓ }
+          @case ('warning') { ⚠ }
+          @default { ℹ }
+        }
+      </span>
+      <span class="notification-message">{{ n.message }}</span>
+    </div>
+  }
+</div>

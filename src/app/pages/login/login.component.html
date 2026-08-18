@@ -1,0 +1,51 @@
+<div class="login-page">
+  <div class="login-card">
+    <div class="login-header">
+      <span class="login-icon">🔐</span>
+      <h1>Вход в систему</h1>
+      <p>Angular Planner</p>
+    </div>
+
+    <form (ngSubmit)="login()" class="login-form">
+      <div class="field">
+        <label>Email</label>
+        <input
+          type="email"
+          [(ngModel)]="email"
+          name="email"
+          placeholder="admin@test.com"
+          autocomplete="email"
+        />
+      </div>
+
+      <div class="field">
+        <label>Пароль</label>
+        <input
+          type="password"
+          [(ngModel)]="password"
+          name="password"
+          placeholder="123456"
+          autocomplete="current-password"
+        />
+      </div>
+
+      @if (error) {
+        <div class="error">{{ error }}</div>
+      }
+
+      <button type="submit" class="login-btn" [disabled]="!email || !password || loading">
+        @if (loading) {
+          <span class="spinner"></span>
+        } @else {
+          Войти
+        }
+      </button>
+    </form>
+
+    <div class="login-hint">
+      <p>Тестовые аккаунты:</p>
+      <code>admin@test.com / 123456</code><br />
+      <code>user@test.com / qwerty</code>
+    </div>
+  </div>
+</div>

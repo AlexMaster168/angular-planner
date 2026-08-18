@@ -1,0 +1,86 @@
+<aside class="sidebar">
+  <app-notif />
+  <h2>Папки</h2>
+
+  <div class="folder-list">
+    <div
+      class="folder-item"
+      [class.active]="todoService.selectedFolderId() === null"
+      (click)="selectFolder(null)"
+    >
+      <span class="folder-icon">📋</span>
+      <span class="folder-name">Все задачи</span>
+      <span class="folder-count">{{ todoService.todos().length }}</span>
+    </div>
+
+    @for (folder of todoService.folders(); track folder.id) {
+      @if (editingFolderId === folder.id) {
+        <div class="folder-edit-form">
+          <input
+            [(ngModel)]="editFolderName"
+            (keyup.enter)="saveEdit(folder.id)"
+            (keyup.escape)="cancelEdit()"
+            class="folder-edit-input"
+            placeholder="Название папки"
+          />
+          <div class="color-picker-inline">
+            @for (color of colorOptions; track color) {
+              <span
+                class="color-dot-sm"
+                [style.background]="color"
+                [class.selected]="editFolderColor === color"
+                (click)="editFolderColor = color"
+              ></span>
+            }
+          </div>
+          <div class="edit-actions">
+            <button class="btn-save" (click)="saveEdit(folder.id)">✓</button>
+            <button class="btn-cancel" (click)="cancelEdit()">✕</button>
+          </div>
+        </div>
+      } @else {
+        <div
+          class="folder-item"
+          [class.active]="todoService.selectedFolderId() === folder.id"
+          (click)="selectFolder(folder.id)"
+        >
+          <span class="folder-color" [style.background]="folder.color"></span>
+          <span class="folder-name">{{ folder.name }}</span>
+          <span class="folder-count">{{ todoService.todoCountByFolder().get(folder.id) || 0 }}</span>
+          <button class="folder-edit-btn" (click)="startEdit(folder); $event.stopPropagation()">✎</button>
+          <button class="folder-delete-btn" (click)="removeFolder(folder.id, $event)">✕</button>
+        </div>
+      }
+    }
+  </div>
+
+  @if (showAddForm) {
+    <div class="add-folder-form">
+      <input
+        [(ngModel)]="newFolderName"
+        (keyup.enter)="addFolder()"
+        (keyup.escape)="showAddForm = false"
+        placeholder="Название папки"
+        class="folder-input"
+      />
+      <div class="color-picker">
+        @for (color of colorOptions; track color) {
+          <span
+            class="color-dot"
+            [style.background]="color"
+            [class.selected]="newFolderColor === color"
+            (click)="newFolderColor = color"
+          ></span>
+        }
+      </div>
+      <div class="form-actions">
+        <button class="btn-add" (click)="addFolder()">Добавить</button>
+        <button class="btn-cancel" (click)="showAddForm = false">Отмена</button>
+      </div>
+    </div>
+  }
+
+  <button class="add-folder-btn" (click)="toggleAddForm()">
+    + Новая папка
+  </button>
+</aside>

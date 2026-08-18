@@ -1,0 +1,13 @@
+<div class="app-layout">
+  <app-sidebar />
+
+  <main class="main-content">
+    <header class="header">
+      <h1>{{ todoService.selectedFolderName() }}</h1>
+      <app-search-bar />
+    </header>
+
+    <app-add-todo />
+    <app-todo-list />
+  </main>
+</div>

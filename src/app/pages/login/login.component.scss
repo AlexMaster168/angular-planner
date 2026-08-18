@@ -1,0 +1,149 @@
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #181825;
+}
+
+.login-card {
+  background: #1e1e2e;
+  border: 1px solid #313244;
+  border-radius: 16px;
+  padding: 2.5rem;
+  width: 380px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  .login-icon {
+    font-size: 2.5rem;
+  }
+
+  h1 {
+    margin: 0.5rem 0 0.25rem;
+    font-size: 1.4rem;
+    color: #cdd6f4;
+  }
+
+  p {
+    margin: 0;
+    color: #6c7086;
+    font-size: 0.9rem;
+  }
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  label {
+    font-size: 0.8rem;
+    color: #a6adc8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  input {
+    background: #313244;
+    border: 1px solid #45475a;
+    border-radius: 8px;
+    color: #cdd6f4;
+    padding: 0.7rem 0.85rem;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.15s;
+
+    &::placeholder {
+      color: #585b70;
+    }
+
+    &:focus {
+      border-color: #89b4fa;
+    }
+  }
+}
+
+.error {
+  background: rgba(243, 139, 168, 0.1);
+  border: 1px solid #f38ba8;
+  border-radius: 8px;
+  color: #f38ba8;
+  padding: 0.6rem 0.85rem;
+  font-size: 0.85rem;
+}
+
+.login-btn {
+  background: #89b4fa;
+  color: #1e1e2e;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+
+  &:hover:not(:disabled) {
+    background: #b4befe;
+  }
+
+  &:disabled {
+    background: #45475a;
+    color: #6c7086;
+    cursor: not-allowed;
+  }
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #1e1e2e;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.login-hint {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #313244;
+  text-align: center;
+
+  p {
+    margin: 0 0 0.4rem;
+    font-size: 0.8rem;
+    color: #6c7086;
+  }
+
+  code {
+    display: inline-block;
+    background: #313244;
+    color: #a6adc8;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin: 0.15rem 0;
+  }
+}
